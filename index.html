@@ -3,53 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designer & Developer Portfolio</title>
+    <title>Zahra Ibrahim | Design Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav>
-        <div class="logo">PORTFOLIO<span>.</span></div>
-        <ul class="nav-links">
-            <li><a href="#work">Work</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <nav class="glass-nav">
+        <div class="logo">ZI<span>.</span></div>
+        <div class="nav-links">
+            <a href="#work">Projects</a>
+            <a href="#contact" class="btn-small">Hire Me</a>
+        </div>
     </nav>
 
-    <header class="hero">
-        <h1>Crafting <span class="highlight">Digital</span> Experiences</h1>
-        <p>Graphic Designer | UI/UX Specialist | Full-Stack Developer</p>
-        <a href="#work" class="btn">View My Work</a>
-    </header>
-
-    <section id="work" class="portfolio-grid">
-        <div class="project-card">
-            <div class="image-placeholder">Project One</div>
-            <h3>Brand Identity</h3>
-            <p>UI/UX & Branding</p>
-        </div>
-        <div class="project-card">
-            <div class="image-placeholder">Project Two</div>
-            <h3>Web Application</h3>
-            <p>PHP & Python Development</p>
-        </div>
-        <div class="project-card">
-            <div class="image-placeholder">Project Three</div>
-            <h3>3D Visuals</h3>
-            <p>Interactive Design</p>
+    <section class="hero">
+        <div class="hero-content reveal">
+            <span class="badge">Available for Projects</span>
+            <h1>Designing the <span class="gradient-text">Future</span> of Digital.</h1>
+            <p>Graphic Designer & UI/UX Specialist focused on immersive visual storytelling.</p>
+            <div class="hero-btns">
+                <a href="#work" class="btn-primary">Explore Work</a>
+                <a href="https://github.com/zahraibrahim" class="btn-secondary">GitHub</a>
+            </div>
         </div>
     </section>
 
-    <footer id="contact">
-        <h2>Let's build something together.</h2>
-        <p>Email: hello@yourdomain.com</p>
-        <div class="socials">
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
+    <section id="work" class="work-section">
+        <h2 class="reveal">Selected Works</h2>
+        <div class="grid">
+            <div class="card reveal">
+                <div class="card-img" style="background: linear-gradient(45deg, #222, #444);">
+                    <span>Brand Identity</span>
+                </div>
+                <div class="card-info">
+                    <h3>Zesoria Brand System</h3>
+                    <p>3D Visualization & Ecommerce Design</p>
+                </div>
+            </div>
+            <div class="card reveal">
+                <div class="card-img" style="background: linear-gradient(45deg, #00d2ff, #3a7bd5);">
+                    <span>UI/UX</span>
+                </div>
+                <div class="card-info">
+                    <h3>Predictive FinTech</h3>
+                    <p>Digital Architecture & Dashboarding</p>
+                </div>
+            </div>
         </div>
-    </footer>
+    </section>
 
+    <script src="script.js"></script>
 </body>
 </html>
