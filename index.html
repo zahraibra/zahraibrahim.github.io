@@ -39,7 +39,7 @@
         /* HEADER & EDUCATION */
         .header-section { text-align: center; padding: 40px 20px 20px 20px; }
         h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; }
-        .subtitle { color: var(--text-dim); font-size: 1.1rem; margin-bottom: 25px; }
+        .subtitle { color: var(--text-dim); font-size: 1.1rem; }
         
         .edu-tag {
             display: inline-block;
@@ -47,23 +47,26 @@
             border: 1px solid var(--accent);
             padding: 12px 35px;
             border-radius: 50px;
-            margin-top: 10px;
+            margin-top: 25px;
         }
 
-        /* PROJECTS GRID */
+        /* PROJECTS */
+        .projects-header { text-align: center; margin: 60px 0 30px 0; }
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 25px;
-            margin-top: 30px;
         }
         .project-item {
             background: var(--card-bg); border: 1px solid var(--border);
-            border-radius: 25px; padding: 20px; transition: 0.3s;
+            border-radius: 25px; padding: 25px; transition: 0.3s; display: flex; flex-direction: column;
         }
         .project-item:hover { border-color: var(--accent); }
+        .project-media {
+            width: 100%; height: 200px; background: #000; border-radius: 15px; margin-bottom: 15px; overflow: hidden; border: 1px solid #222;
+        }
 
-        /* SKILLS & CERTS GRID */
+        /* GRIDS FOR ARSENAL & CERTS */
         .skills-detailed-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -73,34 +76,36 @@
         .skill-box {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid #1a1a1a;
-            padding: 30px; border-radius: 20px; text-align: center;
+            padding: 30px; border-radius: 25px; text-align: center;
         }
-        .skill-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+        .skill-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; filter: drop-shadow(0 0 5px var(--accent)); }
 
-        /* BUTTONS */
+        /* INTERACTIVE BUTTONS */
         .btn {
             display: inline-block; padding: 12px; border-radius: 12px;
             text-decoration: none; font-size: 0.85rem; font-weight: 600;
-            text-align: center; transition: 0.3s; cursor: pointer; border: 1px solid var(--border);
+            text-align: center; transition: 0.3s; cursor: pointer; border: 1px solid #333;
             background: transparent; color: white; width: 100%; margin-top: 15px;
         }
-        .btn:hover { border-color: var(--accent); color: var(--accent); }
+        .btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(138, 43, 226, 0.05); }
+        .btn-primary { background: var(--accent); border-color: var(--accent); }
+        .btn-primary:hover { background: var(--btn-hover); color: white; }
 
         /* MODAL STYLING */
         .modal {
             display: none; position: fixed; z-index: 1000; left: 0; top: 0;
-            width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(5px);
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.95); backdrop-filter: blur(8px);
         }
         .modal-content {
-            margin: auto; display: block; max-width: 80%; max-height: 80%;
-            border-radius: 15px; margin-top: 5%; border: 1px solid var(--accent);
+            margin: auto; display: block; max-width: 85%; max-height: 85%;
+            border-radius: 15px; margin-top: 3%; border: 2px solid var(--accent);
         }
         .close-modal {
             position: absolute; top: 20px; right: 35px; color: #fff;
-            font-size: 40px; font-weight: bold; cursor: pointer;
+            font-size: 50px; font-weight: bold; cursor: pointer;
         }
 
-        h3 { color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; text-align: center; }
+        h3 { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem; text-align: center; }
 
         @media (max-width: 1000px) {
             .skills-detailed-grid { grid-template-columns: 1fr 1fr; }
@@ -114,96 +119,66 @@
     <header class="card full-width reveal header-section">
         <h1>Zahra Ibrahim</h1>
         <p class="subtitle">Graphic Designer | UI/UX Specialist | Web Developer</p>
+        
         <div class="edu-tag">
             <h4>BBIT (Hons)</h4>
             <p>University of Engineering and Technology (UET), Lahore | 2023 — 2027</p>
         </div>
     </header>
 
-    <section class="full-width reveal" style="margin-top: 50px;">
-        <h3>Selected Works</h3>
-        <div class="projects-grid">
-            <div class="project-item">
-                <h4>Zesoria E-commerce</h4>
-                <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 10px;">Full-stack candle business platform with Odoo integration.</p>
+    <main class="bento-grid">
+        
+        <div class="full-width reveal">
+            <div class="projects-header">
+                <h3>Selected Works</h3>
             </div>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <div class="project-media"><video autoplay muted loop playsinline src="zesoria.mp4" style="width:100%; height:100%; object-fit:cover;"></video></div>
+                    <h4>Zesoria E-commerce</h4>
+                    <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 8px;">Full-stack candle business platform with Odoo integration.</p>
+                    <div style="display:flex; gap:10px; margin-top:auto;">
+                        <a href="#" class="btn btn-primary">View Project</a>
+                        <a href="#" class="btn">Code</a>
+                    </div>
+                </div>
+                <div class="project-item"><div class="project-media"></div><h4>FinTech App</h4><p style="color:var(--text-dim); font-size:0.85rem;">UI/UX student management.</p><div style="display:flex; gap:10px; margin-top:auto;"><a href="#" class="btn btn-primary">View</a><a href="#" class="btn">Code</a></div></div>
+                <div class="project-item"><div class="project-media"></div><h4>Identity Suite</h4><p style="color:var(--text-dim); font-size:0.85rem;">Branding for tech startups.</p><div style="display:flex; gap:10px; margin-top:auto;"><a href="#" class="btn btn-primary">View</a><a href="#" class="btn">Code</a></div></div>
+                <div class="project-item"><div class="project-media"></div><h4>Admin Portal</h4><p style="color:var(--text-dim); font-size:0.85rem;">PHP/SQL inventory system.</p><div style="display:flex; gap:10px; margin-top:auto;"><a href="#" class="btn btn-primary">View</a><a href="#" class="btn">Code</a></div></div>
+                <div class="project-item"><div class="project-media"></div><h4>Brand Kit</h4><p style="color:var(--text-dim); font-size:0.85rem;">Marketing print assets.</p><div style="display:flex; gap:10px; margin-top:auto;"><a href="#" class="btn btn-primary">View</a><a href="#" class="btn">Code</a></div></div>
+                <div class="project-item"><div class="project-media"></div><h4>Automation Tool</h4><p style="color:var(--text-dim); font-size:0.85rem;">Python workflow efficiency.</p><div style="display:flex; gap:10px; margin-top:auto;"><a href="#" class="btn btn-primary">View</a><a href="#" class="btn">Code</a></div></div>
+                <div class="project-item"><div class="project-media"></div><h4>Social Content</h4><p style="color:var(--text-dim); font-size:0.85rem;">Instagram/LinkedIn strategy.</p><div style="display:flex; gap:10px; margin-top:auto;"><a href="#" class="btn btn-primary">View</a><a href="#" class="btn">Code</a></div></div>
+                <div class="project-item"><div class="project-media"></div><h4>Research Portal</h4><p style="color:var(--text-dim); font-size:0.85rem;">SPSS workplace analysis.</p><div style="display:flex; gap:10px; margin-top:auto;"><a href="#" class="btn btn-primary">View</a><a href="#" class="btn">Code</a></div></div>
             </div>
-    </section>
-
-    <section class="card full-width reveal" style="margin-top: 40px;">
-        <h3>Technical Arsenal</h3>
-        <div class="skills-detailed-grid">
-            <div class="skill-box"><span class="skill-icon">🎨</span><h4>Logo Designing</h4></div>
-            <div class="skill-box"><span class="skill-icon">✨</span><h4>UI/UX</h4></div>
-            <div class="skill-box"><span class="skill-icon">🛠️</span><h4>Prototype Building</h4></div>
-            <div class="skill-box"><span class="skill-icon">📄</span><h4>Brochure Designing</h4></div>
-            <div class="skill-box"><span class="skill-icon">📱</span><h4>Social Media Post</h4></div>
-            <div class="skill-box"><span class="skill-icon">📊</span><h4>Research & SPSS</h4></div>
         </div>
-    </section>
 
-    <section class="card full-width reveal" style="margin-top: 40px; margin-bottom: 50px;">
-        <h3>Professional Certifications</h3>
-        <div class="skills-detailed-grid">
-            
-            <div class="skill-box">
-                <span class="skill-icon">🎖️</span>
-                <h4>Google UX Design</h4>
-                <p style="color: var(--text-dim); font-size: 0.85rem;">End-to-end design process.</p>
-                <button class="btn" onclick="openCert('google-cert.jpg')">View Certificate</button>
+        <section class="card full-width reveal" style="margin-top: 40px;">
+            <h3>Technical Arsenal</h3>
+            <div class="skills-detailed-grid">
+                <div class="skill-box"><span class="skill-icon">🎨</span><h4>Logo Designing</h4><p style="color:var(--text-dim); font-size:0.85rem;">Unique minimalist identities.</p></div>
+                <div class="skill-box"><span class="skill-icon">✨</span><h4>UI/UX</h4><p style="color:var(--text-dim); font-size:0.85rem;">User-centric interfaces.</p></div>
+                <div class="skill-box"><span class="skill-icon">🛠️</span><h4>Prototypes</h4><p style="color:var(--text-dim); font-size:0.85rem;">High-fidelity wireframing.</p></div>
+                <div class="skill-box"><span class="skill-icon">📄</span><h4>Brochures</h4><p style="color:var(--text-dim); font-size:0.85rem;">Print-ready materials.</p></div>
+                <div class="skill-box"><span class="skill-icon">📱</span><h4>Social Media</h4><p style="color:var(--text-dim); font-size:0.85rem;">High-engagement assets.</p></div>
+                <div class="skill-box"><span class="skill-icon">📊</span><h4>SPSS Research</h4><p style="color:var(--text-dim); font-size:0.85rem;">Statistical data analysis.</p></div>
             </div>
+        </section>
 
-            <div class="skill-box">
-                <span class="skill-icon">📜</span>
-                <h4>Adobe Illustrator</h4>
-                <p style="color: var(--text-dim); font-size: 0.85rem;">Advanced Vector Design.</p>
-                <button class="btn" onclick="openCert('adobe-cert.jpg')">View Certificate</button>
+        <section class="card full-width reveal" style="margin-top: 40px; margin-bottom: 50px;">
+            <h3>Professional Certifications</h3>
+            <div class="skills-detailed-grid">
+                <div class="skill-box"><span class="skill-icon">🎖️</span><h4>Google UX Design</h4><button class="btn" onclick="openCert('google.jpg')">View Certificate</button></div>
+                <div class="skill-box"><span class="skill-icon">🎨</span><h4>Adobe Illustrator</h4><button class="btn" onclick="openCert('adobe.jpg')">View Certificate</button></div>
+                <div class="skill-box"><span class="skill-icon">💻</span><h4>Meta Front-End</h4><button class="btn" onclick="openCert('meta.jpg')">View Certificate</button></div>
+                <div class="skill-box"><span class="skill-icon">🏗️</span><h4>Odoo Development</h4><button class="btn" onclick="openCert('odoo.jpg')">View Certificate</button></div>
+                <div class="skill-box"><span class="skill-icon">📊</span><h4>IBM Data Science</h4><button class="btn" onclick="openCert('ibm.jpg')">View Certificate</button></div>
+                <div class="skill-box"><span class="skill-icon">🔍</span><h4>SEO Specialist</h4><button class="btn" onclick="openCert('seo.jpg')">View Certificate</button></div>
+                <div class="skill-box"><span class="skill-icon">🚀</span><h4>Digital Strategy</h4><button class="btn" onclick="openCert('digital.jpg')">View Certificate</button></div>
+                <div class="skill-box"><span class="skill-icon">🔒</span><h4>IT Fundamentals</h4><button class="btn" onclick="openCert('it.jpg')">View Certificate</button></div>
             </div>
+        </section>
 
-            <div class="skill-box">
-                <span class="skill-icon">💻</span>
-                <h4>Meta Front-End</h4>
-                <p style="color: var(--text-dim); font-size: 0.85rem;">React & Responsive Design.</p>
-                <button class="btn" onclick="openCert('meta-cert.jpg')">View Certificate</button>
-            </div>
-
-            <div class="skill-box">
-                <span class="skill-icon">🏗️</span>
-                <h4>Odoo ERP</h4>
-                <p style="color: var(--text-dim); font-size: 0.85rem;">Custom Module Development.</p>
-                <button class="btn" onclick="openCert('odoo-cert.jpg')">View Certificate</button>
-            </div>
-
-            <div class="skill-box">
-                <span class="skill-icon">📊</span>
-                <h4>IBM Data Science</h4>
-                <p style="color: var(--text-dim); font-size: 0.85rem;">Statistical Analysis.</p>
-                <button class="btn" onclick="openCert('ibm-cert.jpg')">View Certificate</button>
-            </div>
-
-            <div class="skill-box">
-                <span class="skill-icon">🔍</span>
-                <h4>SEO Marketing</h4>
-                <p style="color: var(--text-dim); font-size: 0.85rem;">Technical Optimization.</p>
-                <button class="btn" onclick="openCert('seo-cert.jpg')">View Certificate</button>
-            </div>
-
-            <div class="skill-box">
-                <span class="skill-icon">🚀</span>
-                <h4>Digital Strategy</h4>
-                <p style="color: var(--text-dim); font-size: 0.85rem;">Branding & Analytics.</p>
-                <button class="btn" onclick="openCert('digital-cert.jpg')">View Certificate</button>
-            </div>
-
-            <div class="skill-box">
-                <span class="skill-icon">🔒</span>
-                <h4>IT Fundamentals</h4>
-                <p style="color: var(--text-dim); font-size: 0.85rem;">CompTIA Standards.</p>
-                <button class="btn" onclick="openCert('it-cert.jpg')">View Certificate</button>
-            </div>
-
-        </div>
-    </section>
+    </main>
 </div>
 
 <div id="certModal" class="modal">
