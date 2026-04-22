@@ -13,6 +13,7 @@
             --text-main: #ffffff;
             --text-dim: #a0a0a0;
             --border: #1a1a1a;
+            --btn-hover: #7224bc;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
@@ -34,9 +35,8 @@
         .card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2); }
 
         .full-width { grid-column: span 3; }
-        .two-thirds { grid-column: span 2; }
 
-        /* SKILLS GRID - FULL WIDTH */
+        /* SKILLS GRID */
         .skills-detailed-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -49,30 +49,75 @@
             border: 1px solid #1a1a1a;
             padding: 30px;
             border-radius: 20px;
-            transition: 0.3s;
             text-align: center;
-        }
-
-        .skill-box:hover {
-            background: rgba(138, 43, 226, 0.1);
-            border-color: var(--accent);
-            box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
         }
 
         .skill-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; filter: drop-shadow(0 0 5px var(--accent)); }
         .skill-box h4 { color: #fff; margin-bottom: 12px; font-size: 1.2rem; font-weight: 800; }
         .skill-box p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; }
 
-        .media-box { width: 100%; height: 320px; background: #000; border-radius: 20px; overflow: hidden; margin-bottom: 20px; border: 1px solid #222; }
-        video, img { width: 100%; height: 100%; object-fit: cover; }
+        /* PROJECTS SECTION */
+        .projects-header { text-align: center; margin: 60px 0 30px 0; }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
 
+        .project-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
+
+        .project-item:hover { border-color: var(--accent); }
+
+        .project-media {
+            width: 100%;
+            height: 200px;
+            background: #000;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 1px solid #222;
+        }
+
+        .project-media video, .project-media img { width: 100%; height: 100%; object-fit: cover; }
+
+        .project-info h4 { font-size: 1.3rem; margin-bottom: 8px; color: #fff; }
+        .project-info p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 20px; line-height: 1.5; }
+
+        .btn-group { display: flex; gap: 10px; margin-top: auto; }
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .btn-primary { background: var(--accent); color: white; border: 1px solid var(--accent); }
+        .btn-primary:hover { background: var(--btn-hover); }
+
+        .btn-outline { background: transparent; color: white; border: 1px solid #333; }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* Footer & Edu Styling */
         h1 { font-size: 3.5rem; font-weight: 800; }
         h3 { color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; margin-bottom: 5px; }
 
         @media (max-width: 1000px) {
             .skills-detailed-grid { grid-template-columns: 1fr 1fr; }
             .bento-grid { grid-template-columns: 1fr; }
-            .full-width, .two-thirds { grid-column: span 1; }
+            .full-width { grid-column: span 1; }
         }
     </style>
 </head>
@@ -89,55 +134,147 @@
         <section class="card full-width reveal">
             <h3 style="text-align: center; margin-bottom: 10px;">Technical Arsenal</h3>
             <div class="skills-detailed-grid">
-                
                 <div class="skill-box">
                     <span class="skill-icon">🎨</span>
                     <h4>Logo Designing</h4>
                     <p>Crafting unique brand identities and minimalist logos that communicate core business values.</p>
                 </div>
-
                 <div class="skill-box">
                     <span class="skill-icon">✨</span>
                     <h4>UI/UX</h4>
                     <p>Designing intuitive interfaces and digital experiences with a focus on visual hierarchy.</p>
                 </div>
-
                 <div class="skill-box">
                     <span class="skill-icon">🛠️</span>
                     <h4>Prototype Building</h4>
                     <p>Building high-fidelity interactive prototypes to test workflows before development.</p>
                 </div>
-
                 <div class="skill-box">
                     <span class="skill-icon">📄</span>
                     <h4>Brochure Designing</h4>
                     <p>Developing print-ready materials and corporate brochures for marketing campaigns.</p>
                 </div>
-
                 <div class="skill-box">
                     <span class="skill-icon">📱</span>
                     <h4>Social Media Post Designing</h4>
                     <p>Creating creative, high-engagement assets for Instagram, LinkedIn, and Facebook.</p>
                 </div>
-
                 <div class="skill-box">
                     <span class="skill-icon">📊</span>
                     <h4>Research & SPSS</h4>
                     <p>Applying statistical analysis to research projects for data-driven results.</p>
                 </div>
-
             </div>
         </section>
 
-        <section class="card two-thirds reveal">
-            <div class="media-box">
-                <video autoplay muted loop playsinline src="zesoria.mp4"></video>
+        <div class="full-width">
+            <div class="projects-header reveal">
+                <h3>Selected Projects</h3>
+                <p style="color: var(--text-dim);">A collection of my creative and technical work</p>
             </div>
-            <h3>Zesoria E-commerce</h3>
-            <p style="color: var(--text-dim);">A full-stack e-commerce project featuring Odoo integration and custom 3D environments.</p>
-        </section>
 
-        <section class="card reveal">
+            <div class="projects-grid reveal">
+                <div class="project-item">
+                    <div class="project-media">
+                        <video autoplay muted loop playsinline src="zesoria.mp4"></video>
+                    </div>
+                    <div class="project-info">
+                        <h4>Zesoria E-commerce</h4>
+                        <p>Full-stack candle business platform featuring Odoo integration and custom 3D environments.</p>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-primary">View Project</a>
+                            <a href="#" class="btn btn-outline">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-media"><div style="display:flex; height:100%; align-items:center; justify-content:center; color:#333;">UI/UX Project Visual</div></div>
+                    <div class="project-info">
+                        <h4>Mobile App Design</h4>
+                        <p>A user-centric mobile application focused on streamlining financial management for students.</p>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-primary">View Project</a>
+                            <a href="#" class="btn btn-outline">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-media"><div style="display:flex; height:100%; align-items:center; justify-content:center; color:#333;">Branding Visual</div></div>
+                    <div class="project-info">
+                        <h4>Corporate Identity</h4>
+                        <p>Complete branding package including logo design, business cards, and social media assets.</p>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-primary">View Project</a>
+                            <a href="#" class="btn btn-outline">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-media"><div style="display:flex; height:100%; align-items:center; justify-content:center; color:#333;">Web Visual</div></div>
+                    <div class="project-info">
+                        <h4>Interactive Web Dashboard</h4>
+                        <p>Custom PHP-based dashboard for data visualization and cross-departmental coordination.</p>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-primary">View Project</a>
+                            <a href="#" class="btn btn-outline">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-media"><div style="display:flex; height:100%; align-items:center; justify-content:center; color:#333;">Design Visual</div></div>
+                    <div class="project-info">
+                        <h4>Brochure Series</h4>
+                        <p>Print marketing materials designed for the LCI Ignite summer internship program recruitment.</p>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-primary">View Project</a>
+                            <a href="#" class="btn btn-outline">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-media"><div style="display:flex; height:100%; align-items:center; justify-content:center; color:#333;">Data Visual</div></div>
+                    <div class="project-info">
+                        <h4>SPSS Analysis Portal</h4>
+                        <p>Technical portal documenting the results of workplace harassment research in the IT sector.</p>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-primary">View Project</a>
+                            <a href="#" class="btn btn-outline">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-media"><div style="display:flex; height:100%; align-items:center; justify-content:center; color:#333;">Social Media Visual</div></div>
+                    <div class="project-info">
+                        <h4>Marketing Campaign</h4>
+                        <p>High-engagement social media campaign focusing on the PM Youth Laptop Scheme achievement.</p>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-primary">View Project</a>
+                            <a href="#" class="btn btn-outline">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-media"><div style="display:flex; height:100%; align-items:center; justify-content:center; color:#333;">Python Visual</div></div>
+                    <div class="project-info">
+                        <h4>Python Automation Tool</h4>
+                        <p>A desktop application designed to automate inventory tracking for SME businesses.</p>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-primary">View Project</a>
+                            <a href="#" class="btn btn-outline">View Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="card reveal" style="grid-column: span 1;">
             <h3>Education</h3>
             <div style="margin-top: 15px;">
                 <strong style="display:block; color:white;">BBIT (Hons)</strong>
@@ -146,13 +283,13 @@
             </div>
         </section>
 
-        <section class="card full-width reveal" style="display: flex; align-items: center; justify-content: space-between;">
+        <section class="card reveal" style="grid-column: span 2; display: flex; align-items: center; justify-content: space-between;">
             <div>
                 <h3>Merit Achievement</h3>
-                <p style="color: var(--text-dim); margin-top: 5px;">Recipient of the Prime Minister's Youth Laptop Scheme based on academic excellence.</p>
+                <p style="color: var(--text-dim);">Recipient of the PM's Youth Laptop Scheme award.</p>
             </div>
-            <div style="background: var(--accent); padding: 12px 25px; border-radius: 50px; font-weight: 800; font-size: 0.8rem;">
-                AWARDED BY GOVT OF PAKISTAN
+            <div style="background: var(--accent); padding: 10px 20px; border-radius: 50px; font-weight: 800; font-size: 0.7rem;">
+                GOVT AWARDED
             </div>
         </section>
 
