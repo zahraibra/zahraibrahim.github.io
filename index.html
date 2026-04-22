@@ -3,88 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zahra Ibrahim | BBIT & Design Portfolio</title>
+    <title>Zahra Ibrahim | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@300;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="glass-nav">
-        <div class="logo">ZI<span>.</span></div>
-        <div class="nav-links">
-            <a href="#projects">Work</a>
-            <a href="#education">Education</a>
-            <a href="#contact" class="btn-small">Contact</a>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="reveal">
+    <main class="bento-container">
+        <section class="item profile-box">
+            <div class="status-badge">● Available for Work</div>
             <h1>Zahra Ibrahim</h1>
-            <p class="subtitle">Graphic Designer | UI/UX | Business IT Student</p>
-        </div>
-    </header>
+            <p>Graphic Designer & UI/UX Specialist bridging the gap between Business IT and Visual Storytelling.</p>
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+            </div>
+        </section>
 
-    <section id="projects" class="container">
-        <h2 class="reveal">Featured Projects</h2>
-        
-        <div class="project-long reveal">
-            <div class="project-media">
-                <video autoplay muted loop playsinline class="portfolio-video">
-                    <source src="zesoria-demo.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+        <section class="item education-box">
+            <h3>Education</h3>
+            <div class="edu-card">
+                <strong>BBIT (Hons)</strong>
+                <span>UET Lahore | Session 2023</span>
             </div>
-            <div class="project-content">
-                <h3>Zesoria E-commerce</h3>
-                <p>A full-stack candle business platform featuring Odoo integration, PHP/Python backend, and immersive 3D digital environments.</p>
-                <div class="tags"><span>UI/UX</span><span>Odoo</span><span>Full-Stack</span></div>
+            <div class="edu-card">
+                <strong>LCI Ignite</strong>
+                <span>Management Trainee Program</span>
             </div>
-        </div>
+        </section>
 
-        <div class="project-long reveal reverse">
-            <div class="project-media">
-                <img src="research-thumb.jpg" alt="Workplace Harassment Research">
+        <section class="item project-main">
+            <div class="tag">Featured Project</div>
+            <h2>Zesoria E-commerce</h2>
+            <p>Full-stack candle business platform with Odoo integration.</p>
+            <div class="media-placeholder">
+                 <video autoplay muted loop playsinline src="zesoria.mp4"></video>
             </div>
-            <div class="project-content">
-                <h3>IT Sector Research</h3>
-                <p>Statistical analysis of workplace harassment in Pakistan's IT sector using SPSS, focused on data-driven organizational change.</p>
-                <div class="tags"><span>Research</span><span>SPSS</span><span>Data Analysis</span></div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="education" class="container dark-bg">
-        <div class="split-grid">
-            <div class="reveal">
-                <h2>Education</h2>
-                <div class="edu-item">
-                    <h4>Bachelors in Business Information Technology</h4>
-                    <p>University of Engineering and Technology (UET), Lahore</p>
-                    <small>Session 2023 - Present</small>
-                </div>
-            </div>
-            <div class="reveal">
-                <h2>Certifications & Honors</h2>
-                <ul class="cert-list">
-                    <li>PM Youth Laptop Scheme (Academic Merit)</li>
-                    <li>LCI Ignite Summer Internship Program</li>
-                    <li>Professional Graphic Design Certification</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        <section class="item research-box">
+            <h3>IT Sector Research</h3>
+            <p>Statistical analysis on workplace harassment using SPSS.</p>
+            <span class="tag-small">Data Science</span>
+        </section>
 
-    <footer id="contact">
-        <h2>Let's Connect</h2>
-        <p>Expertise in Design, Business Strategy, and Digital Architecture.</p>
-        <div class="socials">
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
-            <a href="#">Email</a>
-        </div>
-    </footer>
+        <section class="item certs-box">
+            <h3>Honors</h3>
+            <ul>
+                <li>PM Youth Laptop Scheme</li>
+                <li>UI/UX Design Certification</li>
+            </ul>
+        </section>
+    </main>
 
-    <script src="script.js"></script>
 </body>
 </html>
