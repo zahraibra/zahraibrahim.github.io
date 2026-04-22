@@ -36,69 +36,34 @@
 
         .full-width { grid-column: span 3; }
 
-        /* HEADER */
-        .header-section { text-align: center; padding: 40px 20px 20px 20px; border-bottom: none; border-radius: 30px 30px 0 0; }
+        /* HEADER & EDUCATION */
+        .header-section { text-align: center; padding: 40px 20px 20px 20px; }
         h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; }
-        .subtitle { color: var(--text-dim); font-size: 1.1rem; }
+        .subtitle { color: var(--text-dim); font-size: 1.1rem; margin-bottom: 25px; }
         
-        /* EDUCATION SECTION (NOW AT THE TOP) */
-        .education-header-card {
-            text-align: center;
-            background: linear-gradient(180deg, var(--card-bg) 0%, #080808 100%);
-            border-top: none;
-            border-radius: 0 0 30px 30px;
-            padding-bottom: 40px;
-            margin-bottom: 30px;
-        }
         .edu-tag {
             display: inline-block;
             background: rgba(138, 43, 226, 0.1);
             border: 1px solid var(--accent);
             padding: 12px 35px;
             border-radius: 50px;
+            margin-top: 10px;
         }
-        .edu-tag h4 { color: white; font-size: 1.3rem; font-weight: 700; }
-        .edu-tag p { color: var(--text-dim); font-size: 0.9rem; margin-top: 4px; }
 
-        /* PROJECTS */
-        .projects-header { text-align: center; margin: 40px 0 30px 0; }
+        /* PROJECTS GRID */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 25px;
-            margin-bottom: 60px;
+            margin-top: 30px;
         }
         .project-item {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 25px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            transition: 0.3s;
+            background: var(--card-bg); border: 1px solid var(--border);
+            border-radius: 25px; padding: 20px; transition: 0.3s;
         }
         .project-item:hover { border-color: var(--accent); }
-        .project-media {
-            width: 100%;
-            height: 200px;
-            background: #000;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            border: 1px solid #222;
-        }
-        .project-info h4 { font-size: 1.3rem; margin-bottom: 8px; color: #fff; }
-        .project-info p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 20px; line-height: 1.5; }
 
-        .btn-group { display: flex; gap: 10px; margin-top: auto; }
-        .btn {
-            flex: 1; padding: 12px; border-radius: 12px; text-decoration: none;
-            font-size: 0.85rem; font-weight: 600; text-align: center; transition: 0.3s;
-        }
-        .btn-primary { background: var(--accent); color: white; border: 1px solid var(--accent); }
-        .btn-outline { background: transparent; color: white; border: 1px solid #333; }
-
-        /* TECHNICAL ARSENAL (NOW AT THE BOTTOM) */
+        /* SKILLS & CERTS GRID */
         .skills-detailed-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -108,49 +73,39 @@
         .skill-box {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid #1a1a1a;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
+            padding: 30px; border-radius: 20px; text-align: center;
         }
         .skill-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
 
-        h3 { color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; }
+        /* BUTTONS */
+        .btn {
+            display: inline-block; padding: 12px; border-radius: 12px;
+            text-decoration: none; font-size: 0.85rem; font-weight: 600;
+            text-align: center; transition: 0.3s; cursor: pointer; border: 1px solid var(--border);
+            background: transparent; color: white; width: 100%; margin-top: 15px;
+        }
+        .btn:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* MODAL STYLING */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            margin: auto; display: block; max-width: 80%; max-height: 80%;
+            border-radius: 15px; margin-top: 5%; border: 1px solid var(--accent);
+        }
+        .close-modal {
+            position: absolute; top: 20px; right: 35px; color: #fff;
+            font-size: 40px; font-weight: bold; cursor: pointer;
+        }
+
+        h3 { color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.9rem; text-align: center; }
 
         @media (max-width: 1000px) {
             .skills-detailed-grid { grid-template-columns: 1fr 1fr; }
             .bento-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 2.5rem; }
         }
-        /* Modal Styling */
-.modal {
-    display: none; 
-    position: fixed;
-    z-index: 1000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    backdrop-filter: blur(5px);
-}
-
-.modal-content {
-    margin: auto;
-    display: block;
-    max-width: 80%;
-    max-height: 80%;
-    border-radius: 15px;
-    margin-top: 5%;
-    border: 1px solid var(--accent);
-}
-
-.close-modal {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
     </style>
 </head>
 <body>
@@ -159,151 +114,122 @@
     <header class="card full-width reveal header-section">
         <h1>Zahra Ibrahim</h1>
         <p class="subtitle">Graphic Designer | UI/UX Specialist | Web Developer</p>
-    </header>
-
-    <section class="card full-width reveal education-header-card">
         <div class="edu-tag">
             <h4>BBIT (Hons)</h4>
             <p>University of Engineering and Technology (UET), Lahore | 2023 — 2027</p>
         </div>
+    </header>
+
+    <section class="full-width reveal" style="margin-top: 50px;">
+        <h3>Selected Works</h3>
+        <div class="projects-grid">
+            <div class="project-item">
+                <h4>Zesoria E-commerce</h4>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 10px;">Full-stack candle business platform with Odoo integration.</p>
+            </div>
+            </div>
     </section>
 
-    <main class="bento-grid">
-        
-        <div class="full-width">
-            <div class="projects-header reveal">
-                <h3>Selected Works</h3>
-                <p style="color: var(--text-dim);">My latest design and development projects</p>
+    <section class="card full-width reveal" style="margin-top: 40px;">
+        <h3>Technical Arsenal</h3>
+        <div class="skills-detailed-grid">
+            <div class="skill-box"><span class="skill-icon">🎨</span><h4>Logo Designing</h4></div>
+            <div class="skill-box"><span class="skill-icon">✨</span><h4>UI/UX</h4></div>
+            <div class="skill-box"><span class="skill-icon">🛠️</span><h4>Prototype Building</h4></div>
+            <div class="skill-box"><span class="skill-icon">📄</span><h4>Brochure Designing</h4></div>
+            <div class="skill-box"><span class="skill-icon">📱</span><h4>Social Media Post</h4></div>
+            <div class="skill-box"><span class="skill-icon">📊</span><h4>Research & SPSS</h4></div>
+        </div>
+    </section>
+
+    <section class="card full-width reveal" style="margin-top: 40px; margin-bottom: 50px;">
+        <h3>Professional Certifications</h3>
+        <div class="skills-detailed-grid">
+            
+            <div class="skill-box">
+                <span class="skill-icon">🎖️</span>
+                <h4>Google UX Design</h4>
+                <p style="color: var(--text-dim); font-size: 0.85rem;">End-to-end design process.</p>
+                <button class="btn" onclick="openCert('google-cert.jpg')">View Certificate</button>
             </div>
 
-            <div class="projects-grid reveal">
-                <div class="project-item">
-                    <div class="project-media"><video autoplay muted loop playsinline src="zesoria.mp4" style="width:100%; height:100%; object-fit:cover;"></video></div>
-                    <div class="project-info">
-                        <h4>Zesoria E-commerce</h4>
-                        <p>Full-stack candle business platform with Odoo integration and custom 3D environments.</p>
-                        <div class="btn-group">
-                            <a href="#" class="btn btn-primary">View Project</a>
-                            <a href="#" class="btn btn-outline">View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-media"></div>
-                    <div class="project-info">
-                        <h4>FinTech UI/UX</h4>
-                        <p>User-centric mobile interface designed for student financial management.</p>
-                        <div class="btn-group"><a href="#" class="btn btn-primary">View Project</a><a href="#" class="btn btn-outline">View Code</a></div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-media"></div>
-                    <div class="project-info">
-                        <h4>Brand Identity Suite</h4>
-                        <p>Minimalist logo and asset design for a modern technology startup.</p>
-                        <div class="btn-group"><a href="#" class="btn btn-primary">View Project</a><a href="#" class="btn btn-outline">View Code</a></div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-media"></div>
-                    <div class="project-info">
-                        <h4>Admin Inventory Portal</h4>
-                        <p>PHP and SQL based backend system for managing cross-functional workflows.</p>
-                        <div class="btn-group"><a href="#" class="btn btn-primary">View Project</a><a href="#" class="btn btn-outline">View Code</a></div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-media"></div>
-                    <div class="project-info">
-                        <h4>LCI Ignite Materials</h4>
-                        <p>Corporate brochure and print assets designed for recruitment programs.</p>
-                        <div class="btn-group"><a href="#" class="btn btn-primary">View Project</a><a href="#" class="btn btn-outline">View Code</a></div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-media"></div>
-                    <div class="project-info">
-                        <h4>Python Workflow Tool</h4>
-                        <p>Automation script designed to optimize data entry for small-scale businesses.</p>
-                        <div class="btn-group"><a href="#" class="btn btn-primary">View Project</a><a href="#" class="btn btn-outline">View Code</a></div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-media"></div>
-                    <div class="project-info">
-                        <h4>Social Visual Strategy</h4>
-                        <p>Creative content design for Instagram and LinkedIn brand storytelling.</p>
-                        <div class="btn-group"><a href="#" class="btn btn-primary">View Project</a><a href="#" class="btn btn-outline">View Code</a></div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-media"></div>
-                    <div class="project-info">
-                        <h4>SPSS Research Analytics</h4>
-                        <p>Interactive dashboard visualizing research data on workplace harassment.</p>
-                        <div class="btn-group"><a href="#" class="btn btn-primary">View Project</a><a href="#" class="btn btn-outline">View Code</a></div>
-                    </div>
-                </div>
+            <div class="skill-box">
+                <span class="skill-icon">📜</span>
+                <h4>Adobe Illustrator</h4>
+                <p style="color: var(--text-dim); font-size: 0.85rem;">Advanced Vector Design.</p>
+                <button class="btn" onclick="openCert('adobe-cert.jpg')">View Certificate</button>
             </div>
-        </div>
 
-        <section class="card full-width reveal" style="margin-top: 20px;">
-    <h3 style="text-align: center; margin-bottom: 10px;">Professional Certifications</h3>
-    
-    <div class="skills-detailed-grid">
-        <div class="skill-box">
-            <span class="skill-icon">🎖️</span>
-            <h4>Google UX Design</h4>
-            <p>Professional Certificate in end-to-end design process.</p>
-            <button class="btn btn-outline" style="margin-top:15px; width:100%;" 
-                    onclick="openCert('google-cert.jpg')">View Certificate</button>
-        </div>
+            <div class="skill-box">
+                <span class="skill-icon">💻</span>
+                <h4>Meta Front-End</h4>
+                <p style="color: var(--text-dim); font-size: 0.85rem;">React & Responsive Design.</p>
+                <button class="btn" onclick="openCert('meta-cert.jpg')">View Certificate</button>
+            </div>
 
-        <div class="skill-box">
-            <span class="skill-icon">📜</span>
-            <h4>Adobe Creative Suite</h4>
-            <p>Advanced proficiency in Photoshop, Illustrator, and InDesign.</p>
-            <button class="btn btn-outline" style="margin-top:15px; width:100%;" 
-                    onclick="openCert('adobe-cert.jpg')">View Certificate</button>
-        </div>
+            <div class="skill-box">
+                <span class="skill-icon">🏗️</span>
+                <h4>Odoo ERP</h4>
+                <p style="color: var(--text-dim); font-size: 0.85rem;">Custom Module Development.</p>
+                <button class="btn" onclick="openCert('odoo-cert.jpg')">View Certificate</button>
+            </div>
+
+            <div class="skill-box">
+                <span class="skill-icon">📊</span>
+                <h4>IBM Data Science</h4>
+                <p style="color: var(--text-dim); font-size: 0.85rem;">Statistical Analysis.</p>
+                <button class="btn" onclick="openCert('ibm-cert.jpg')">View Certificate</button>
+            </div>
+
+            <div class="skill-box">
+                <span class="skill-icon">🔍</span>
+                <h4>SEO Marketing</h4>
+                <p style="color: var(--text-dim); font-size: 0.85rem;">Technical Optimization.</p>
+                <button class="btn" onclick="openCert('seo-cert.jpg')">View Certificate</button>
+            </div>
+
+            <div class="skill-box">
+                <span class="skill-icon">🚀</span>
+                <h4>Digital Strategy</h4>
+                <p style="color: var(--text-dim); font-size: 0.85rem;">Branding & Analytics.</p>
+                <button class="btn" onclick="openCert('digital-cert.jpg')">View Certificate</button>
+            </div>
+
+            <div class="skill-box">
+                <span class="skill-icon">🔒</span>
+                <h4>IT Fundamentals</h4>
+                <p style="color: var(--text-dim); font-size: 0.85rem;">CompTIA Standards.</p>
+                <button class="btn" onclick="openCert('it-cert.jpg')">View Certificate</button>
+            </div>
 
         </div>
-</section>
-
-    </main>
+    </section>
 </div>
+
 <div id="certModal" class="modal">
     <span class="close-modal">&times;</span>
     <img class="modal-content" id="certImage">
 </div>
-    <script>
+
+<script>
     const modal = document.getElementById("certModal");
     const modalImg = document.getElementById("certImage");
 
-    // Function to open the modal
     function openCert(imageSrc) {
         modal.style.display = "block";
         modalImg.src = imageSrc;
     }
 
-    // Function to close the modal
     document.querySelector(".close-modal").onclick = function() {
         modal.style.display = "none";
     }
 
-    // Close modal if user clicks outside the image
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
 </script>
+
 </body>
 </html>
