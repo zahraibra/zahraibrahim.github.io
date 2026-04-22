@@ -3,65 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zahra Ibrahim | Design & Tech Portfolio</title>
+    <title>Zahra Ibrahim | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #050505;
-            --card-bg: #111111;
-            --accent-purple: #8a2be2;
-            --neon-blue: #00d2ff;
+            --card-bg: #0f0f0f;
+            --border: #1a1a1a;
+            --accent: #8a2be2; /* Deep Purple */
+            --accent-glow: rgba(138, 43, 226, 0.3);
             --text-main: #ffffff;
-            --text-dim: #b0b0b0;
-            --glass: rgba(138, 43, 226, 0.1);
+            --text-dim: #a0a0a0;
         }
 
+        /* Smooth Scroll & Reset */
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-
         body {
             background-color: var(--bg);
             color: var(--text-main);
             font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
-            padding-bottom: 100px;
+            line-height: 1.6;
+            padding: 20px;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
 
-        /* Animation Keyframes */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .reveal { animation: fadeIn 0.8s ease forwards; }
+        .reveal { animation: fadeInUp 0.8s ease forwards; }
 
         /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 0;
-            border-bottom: 1px solid #222;
-            margin-bottom: 50px;
+            padding: 40px 0;
         }
-
         .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
-        .logo span { color: var(--accent-purple); }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 100px 0;
-            background: radial-gradient(circle at center, var(--glass) 0%, transparent 70%);
-        }
-
-        .hero h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-        .gradient-text {
-            background: linear-gradient(90deg, var(--accent-purple), var(--neon-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .logo span { color: var(--accent); }
 
         /* Bento Grid Layout */
         .bento-grid {
@@ -72,68 +55,63 @@
 
         .card {
             background: var(--card-bg);
-            border: 1px solid #222;
-            border-radius: 30px;
-            padding: 30px;
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 35px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
         }
 
         .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--accent-purple);
-            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.15);
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px var(--accent-glow);
         }
 
-        /* Project Media Handling */
+        /* Hero / Profile */
+        .profile-card { grid-column: span 3; text-align: center; background: radial-gradient(circle at top right, #1a0b2e, #0f0f0f); }
+        .profile-card h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; }
+        .badge { background: var(--accent); padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; }
+
+        /* Projects */
         .project-card { grid-column: span 2; }
-        
         .media-box {
             width: 100%;
-            height: 350px;
+            height: 300px;
             background: #000;
-            border-radius: 20px;
+            border-radius: 18px;
             margin-bottom: 20px;
             overflow: hidden;
-            border: 1px solid #333;
+            border: 1px solid #222;
         }
+        .media-box video, .media-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .card:hover .media-box video { transform: scale(1.05); }
 
-        .media-box video, .media-box img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.5s ease;
+        /* Skills Section */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .skill-pill {
+            background: #161616;
+            border: 1px solid #222;
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            cursor: default;
         }
-
-        .card:hover .media-box img { transform: scale(1.1); }
+        .skill-pill:hover { border-color: var(--accent); background: var(--accent); color: white; }
 
         /* Education & Certs */
-        .education-card { grid-column: span 1; }
-        .cert-card { grid-column: span 3; display: flex; gap: 20px; overflow-x: auto; padding-bottom: 10px; }
-        
-        .cert-item {
-            min-width: 280px;
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 20px;
-            border: 1px solid #333;
-        }
+        .edu-item { margin-bottom: 20px; padding-left: 15px; border-left: 2px solid var(--accent); }
+        .cert-scroll { display: flex; gap: 15px; overflow-x: auto; padding: 10px 0; scrollbar-width: none; }
+        .cert-box { min-width: 250px; background: #161616; padding: 15px; border-radius: 20px; border: 1px solid #222; }
+        .cert-box img { width: 100%; height: 140px; object-fit: cover; border-radius: 12px; margin-bottom: 10px; }
 
-        .cert-img {
-            width: 100%;
-            height: 180px;
-            background: #333;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            object-fit: contain;
-        }
-
-        h3 { color: var(--accent-purple); margin-bottom: 15px; font-size: 1.4rem; }
-        p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.6; }
-
-        /* Mobile Adjustments */
+        /* Responsive */
         @media (max-width: 900px) {
             .bento-grid { grid-template-columns: 1fr; }
-            .project-card, .education-card, .cert-card { grid-column: span 1; }
+            .card, .project-card { grid-column: span 1; }
+            .profile-card h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -142,64 +120,76 @@
     <div class="container">
         <nav class="reveal">
             <div class="logo">ZAHRA<span>.</span></div>
-            <div style="display: flex; gap: 20px;">
-                <a href="#projects" style="color: white; text-decoration: none;">Work</a>
-                <a href="#edu" style="color: white; text-decoration: none;">Bio</a>
-            </div>
+            <div class="badge">Session 2023 • UET Lahore</div>
         </nav>
 
-        <section class="hero reveal">
-            <h1>Creative <span class="gradient-text">Design</span> & Business IT.</h1>
-            <p>Merging high-end UI/UX with Data-Driven Decision Making.</p>
-        </section>
+        <div class="bento-grid">
+            
+            <section class="card profile-card reveal">
+                <h1>Zahra Ibrahim</h1>
+                <p style="color: var(--text-dim); font-size: 1.2rem;">Graphic Designer | UI/UX | BBIT Student</p>
+            </section>
 
-        <main class="bento-grid">
-            <div class="card project-card reveal">
+            <section class="card reveal">
+                <h3 style="color: var(--accent); margin-bottom: 15px;">Technical Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-pill">Python</div>
+                    <div class="skill-pill">UI/UX</div>
+                    <div class="skill-pill">Web Dev</div>
+                    <div class="skill-pill">SPSS</div>
+                    <div class="skill-pill">SQL</div>
+                    <div class="skill-pill">Odoo</div>
+                    <div class="skill-pill">Gen AI</div>
+                </div>
+            </section>
+
+            <section class="card project-card reveal">
                 <div class="media-box">
                     <video autoplay muted loop playsinline src="zesoria.mp4"></video>
                 </div>
-                <h3>Zesoria E-Commerce</h3>
-                <p>Full-stack brand system for an artisanal candle business. Features custom 3D visuals and Odoo integration for seamless operations.</p>
-            </div>
+                <h3>Zesoria E-commerce</h3>
+                <p style="color: var(--text-dim);">Full-stack brand system featuring custom 3D visuals, Odoo ERP integration, and a sleek user interface.</p>
+            </section>
 
-            <div class="card education-card reveal" id="edu">
-                <h3>Education</h3>
-                <div style="margin-bottom: 20px;">
-                    <strong style="color: white;">BBIT (Hons)</strong>
-                    <p>UET Lahore | Session 2023</p>
+            <section class="card reveal">
+                <h3 style="color: var(--accent); margin-bottom: 15px;">Education</h3>
+                <div class="edu-item">
+                    <strong>BBIT (Hons)</strong>
+                    <p style="font-size: 0.9rem;">UET Lahore</p>
                 </div>
-                <div>
-                    <strong style="color: white;">LCI Ignite</strong>
-                    <p>Management Trainee & Summer Internship Program</p>
+                <div class="edu-item">
+                    <strong>LCI Ignite</strong>
+                    <p style="font-size: 0.9rem;">Management Trainee Program</p>
                 </div>
-            </div>
+            </section>
 
-            <div class="card project-card reveal">
-                <div class="media-box">
-                    <img src="research-poster.jpg" alt="Research Project">
-                </div>
-                <h3>SPSS IT Sector Research</h3>
-                <p>Statistical analysis of workplace harassment in Pakistan's IT sector. Data-driven insights to foster safer professional environments.</p>
-            </div>
-
-            <div class="card cert-card reveal">
-                <div style="width: 100%;">
-                    <h3 style="margin-bottom: 20px;">Professional Certifications</h3>
-                    <div style="display: flex; gap: 20px;">
-                        <div class="cert-item">
-                            <img src="laptop-award.jpg" class="cert-img" alt="PM Laptop Scheme">
-                            <strong>PM Youth Laptop Scheme</strong>
-                            <p>Awarded for Academic Excellence.</p>
-                        </div>
-                        <div class="cert-item">
-                            <img src="design-cert.jpg" class="cert-img" alt="Design Cert">
-                            <strong>Graphic Design Pro</strong>
-                            <p>Advanced UI/UX Certification.</p>
-                        </div>
+            <section class="card project-card reveal">
+                <h3 style="color: var(--accent); margin-bottom: 20px;">Certifications & Awards</h3>
+                <div class="cert-scroll">
+                    <div class="cert-box">
+                        <img src="laptop-award.jpg" alt="PM Laptop Scheme">
+                        <strong>PM Youth Laptop Scheme</strong>
+                        <p style="font-size: 0.8rem; color: var(--text-dim);">Academic Merit Award</p>
+                    </div>
+                    <div class="cert-box">
+                        <img src="internship.jpg" alt="Internship">
+                        <strong>LCI Summer Intern</strong>
+                        <p style="font-size: 0.8rem; color: var(--text-dim);">Digital Architecture Focus</p>
+                    </div>
+                    <div class="cert-box">
+                        <img src="design-cert.jpg" alt="UI/UX Cert">
+                        <strong>Graphic Design Pro</strong>
+                        <p style="font-size: 0.8rem; color: var(--text-dim);">UI/UX Certification</p>
                     </div>
                 </div>
-            </div>
-        </main>
+            </section>
+
+            <section class="card reveal">
+                <h3 style="color: var(--accent); margin-bottom: 10px;">Research</h3>
+                <p style="font-size: 0.9rem; color: var(--text-dim);">SPSS Analysis on workplace harassment within Pakistan's IT sector.</p>
+            </section>
+
+        </div>
     </div>
 
 </body>
