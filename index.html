@@ -121,6 +121,36 @@
             .bento-grid { grid-template-columns: 1fr; }
             h1 { font-size: 2.5rem; }
         }
+        /* Modal Styling */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 15px;
+    margin-top: 5%;
+    border: 1px solid var(--accent);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
     </style>
 </head>
 <body>
@@ -224,20 +254,56 @@
             </div>
         </div>
 
-        <section class="card full-width reveal">
-            <h3 style="text-align: center; margin-bottom: 10px;">Technical Arsenal</h3>
-            <div class="skills-detailed-grid">
-                <div class="skill-box"><span class="skill-icon">🎨</span><h4>Logo Designing</h4><p>Unique brand identities and minimalist logos.</p></div>
-                <div class="skill-box"><span class="skill-icon">✨</span><h4>UI/UX</h4><p>Intuitive digital experiences and hierarchy.</p></div>
-                <div class="skill-box"><span class="skill-icon">🛠️</span><h4>Prototype Building</h4><p>Interactive high-fidelity testing models.</p></div>
-                <div class="skill-box"><span class="skill-icon">📄</span><h4>Brochure Designing</h4><p>Print-ready corporate marketing materials.</p></div>
-                <div class="skill-box"><span class="skill-icon">📱</span><h4>Social Media Post</h4><p>Creative assets for visual engagement.</p></div>
-                <div class="skill-box"><span class="skill-icon">📊</span><h4>Research & SPSS</h4><p>Data-driven statistical analysis.</p></div>
-            </div>
-        </section>
+        <section class="card full-width reveal" style="margin-top: 20px;">
+    <h3 style="text-align: center; margin-bottom: 10px;">Professional Certifications</h3>
+    
+    <div class="skills-detailed-grid">
+        <div class="skill-box">
+            <span class="skill-icon">🎖️</span>
+            <h4>Google UX Design</h4>
+            <p>Professional Certificate in end-to-end design process.</p>
+            <button class="btn btn-outline" style="margin-top:15px; width:100%;" 
+                    onclick="openCert('google-cert.jpg')">View Certificate</button>
+        </div>
+
+        <div class="skill-box">
+            <span class="skill-icon">📜</span>
+            <h4>Adobe Creative Suite</h4>
+            <p>Advanced proficiency in Photoshop, Illustrator, and InDesign.</p>
+            <button class="btn btn-outline" style="margin-top:15px; width:100%;" 
+                    onclick="openCert('adobe-cert.jpg')">View Certificate</button>
+        </div>
+
+        </div>
+</section>
 
     </main>
 </div>
+<div id="certModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="certImage">
+</div>
+    <script>
+    const modal = document.getElementById("certModal");
+    const modalImg = document.getElementById("certImage");
 
+    // Function to open the modal
+    function openCert(imageSrc) {
+        modal.style.display = "block";
+        modalImg.src = imageSrc;
+    }
+
+    // Function to close the modal
+    document.querySelector(".close-modal").onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Close modal if user clicks outside the image
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 </body>
 </html>
