@@ -224,39 +224,46 @@
 </div>
 
 <script>
-    const modal = document.getElementById("certModal");
-    const modalImg = document.getElementById("certImage");
-
     function openCert(imageSrc) {
-        // 1. Show the modal
-        modal.style.display = "block";
-        
-        // 2. Clear the old image so it doesn't flicker
-        modalImg.src = ""; 
-        
-        // 3. Set the new source with a timestamp to bypass browser cache
-        modalImg.src = imageSrc + "?v=" + new Date().getTime();
+        const modal = document.getElementById("certModal");
+        const modalImg = document.getElementById("certImage");
 
-        // 4. Professional Error Handling
-        modalImg.onerror = function() {
-            console.error("Path failed: " + imageSrc);
-            // Backup: Try adding a leading dot if it fails
-            if (!imageSrc.startsWith("./")) {
-                modalImg.src = "./" + imageSrc;
-            }
+        if (!modal || !modalImg) {
+            console.error("Modal elements not found in the DOM.");
+            return;
+        }
+
+        // 1. Force display immediately to stop the 'flicker'
+        modal.style.display = "flex"; 
+        modal.style.opacity = "1";
+
+        // 2. Pre-load the image in the background to ensure it's ready
+        const tempImg = new Image();
+        tempImg.src = imageSrc;
+        
+        tempImg.onload = function() {
+            modalImg.src = imageSrc;
+            console.log("Image verified and loaded: " + imageSrc);
+        };
+
+        tempImg.onerror = function() {
+            console.error("Browser blocked or could not find: " + imageSrc);
+            // Professional Fallback: Try a hard relative path
+            modalImg.src = "./" + imageSrc;
         };
     }
 
-    // Close logic
+    // Close functionality
     document.querySelector(".close-modal").onclick = function() {
-        modal.style.display = "none";
-    }
+        document.getElementById("certModal").style.display = "none";
+    };
 
     window.onclick = function(event) {
+        const modal = document.getElementById("certModal");
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
+    };
 </script>
 
 </body>
