@@ -183,7 +183,7 @@
         <div class="skill-box">
             <span class="skill-icon">💻</span>
             <h4>Build Wireframes & Low-Fi</h4>
-            <button class="btn" onclick="openCert('imgfile/lfwf.jpeg')">View Certificate</button>
+            <button class="btn" onclick="openCert('./imgfile/lfwf.jpeg')">View Certificate</button>
         </div>
 
         <div class="skill-box">
@@ -228,23 +228,24 @@
     const modalImg = document.getElementById("certImage");
 
     function openCert(imageSrc) {
-        // Force the modal to show first
         modal.style.display = "block";
         
-        // Use a relative root path to ensure GitHub finds the 'imgfile' folder
-        const fullPath = window.location.origin + window.location.pathname.replace('index.html', '') + imageSrc;
+        // This ensures the image source is set correctly even if the site is in a subfolder
+        const img = new Image();
+        img.src = imageSrc;
         
-        console.log("Loading path: " + fullPath);
-        modalImg.src = imageSrc;
-
-        modalImg.onerror = function() {
-            console.error("Failed to load: " + imageSrc + ". Trying backup path...");
-            // Backup path attempt
-            modalImg.src = "./" + imageSrc;
+        img.onload = function() {
+            modalImg.src = imageSrc;
+            console.log("Success: Image loaded from " + imageSrc);
+        };
+        
+        img.onerror = function() {
+            console.error("Error: Could not find image at " + imageSrc);
+            // Emergency fallback: try absolute path
+            modalImg.src = window.location.href.substring(0, window.location.href.lastIndexOf('/')) + "/" + imageSrc.replace('./', '');
         };
     }
 
-    // Close logic
     document.querySelector(".close-modal").onclick = function() {
         modal.style.display = "none";
         modalImg.src = ""; 
