@@ -228,32 +228,24 @@
         const modal = document.getElementById("certModal");
         const modalImg = document.getElementById("certImage");
 
-        if (!modal || !modalImg) {
-            console.error("Modal elements not found in the DOM.");
-            return;
-        }
+        // 1. Get the exact base URL of your site (Fixes GitHub routing)
+        const baseUrl = window.location.origin + window.location.pathname.replace('index.html', '');
+        const absolutePath = baseUrl + imageSrc;
 
-        // 1. Force display immediately to stop the 'flicker'
         modal.style.display = "flex"; 
-        modal.style.opacity = "1";
-
-        // 2. Pre-load the image in the background to ensure it's ready
-        const tempImg = new Image();
-        tempImg.src = imageSrc;
         
-        tempImg.onload = function() {
-            modalImg.src = imageSrc;
-            console.log("Image verified and loaded: " + imageSrc);
-        };
+        // 2. Clear previous state to stop flickering
+        modalImg.src = ""; 
 
-        tempImg.onerror = function() {
-            console.error("Browser blocked or could not find: " + imageSrc);
-            // Professional Fallback: Try a hard relative path
+        // 3. Try to load
+        modalImg.src = absolutePath;
+
+        modalImg.onerror = function() {
+            console.log("Absolute path failed, trying relative...");
             modalImg.src = "./" + imageSrc;
         };
     }
 
-    // Close functionality
     document.querySelector(".close-modal").onclick = function() {
         document.getElementById("certModal").style.display = "none";
     };
