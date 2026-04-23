@@ -194,16 +194,29 @@ Create High-Fidelity Designs and Prototypes in Figma</h4><button class="btn" onc
 
     function openCert(imageSrc) {
         modal.style.display = "block";
-        modalImg.src = imageSrc;
+        // We set the source and add a timestamp to prevent the browser from showing a "cached" broken image
+        modalImg.src = imageSrc + "?v=" + new Date().getTime();
+
+        // Professional Error Handler
+        modalImg.onerror = function() {
+            console.error("Failed to load: " + imageSrc);
+            // If it fails, we try to see if the path just needs a dot or a slash
+            if (!imageSrc.startsWith("./")) {
+                console.log("Retrying with relative dot path...");
+                modalImg.src = "./" + imageSrc;
+            }
+        };
     }
 
     document.querySelector(".close-modal").onclick = function() {
         modal.style.display = "none";
+        modalImg.src = ""; // Clear source on close to reset
     }
 
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            modalImg.src = "";
         }
     }
 </script>
