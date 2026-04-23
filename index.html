@@ -216,9 +216,11 @@
     </main>
 </div>
 
-<div id="certModal" class="modal">
+<div id="certModal" class="modal" style="display: none;">
     <span class="close-modal">&times;</span>
-    <img class="modal-content" id="certImage">
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <img class="modal-content" id="certImage" src="" style="max-width: 80%; max-height: 80%; border: 3px solid var(--accent); border-radius: 15px; display: block;">
+    </div>
 </div>
 
 <script>
@@ -226,24 +228,26 @@
     const modalImg = document.getElementById("certImage");
 
     function openCert(imageSrc) {
+        // Force the modal to show first
         modal.style.display = "block";
-        // We set the source and add a timestamp to prevent the browser from showing a "cached" broken image
-        modalImg.src = imageSrc + "?v=" + new Date().getTime();
+        
+        // Use a relative root path to ensure GitHub finds the 'imgfile' folder
+        const fullPath = window.location.origin + window.location.pathname.replace('index.html', '') + imageSrc;
+        
+        console.log("Loading path: " + fullPath);
+        modalImg.src = imageSrc;
 
-        // Professional Error Handler
         modalImg.onerror = function() {
-            console.error("Failed to load: " + imageSrc);
-            // If it fails, we try to see if the path just needs a dot or a slash
-            if (!imageSrc.startsWith("./")) {
-                console.log("Retrying with relative dot path...");
-                modalImg.src = "./" + imageSrc;
-            }
+            console.error("Failed to load: " + imageSrc + ". Trying backup path...");
+            // Backup path attempt
+            modalImg.src = "./" + imageSrc;
         };
     }
 
+    // Close logic
     document.querySelector(".close-modal").onclick = function() {
         modal.style.display = "none";
-        modalImg.src = ""; // Clear source on close to reset
+        modalImg.src = ""; 
     }
 
     window.onclick = function(event) {
